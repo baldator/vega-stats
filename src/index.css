@@ -1,13 +1,97 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: black;
+    color: white;
+    padding: 2em;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.words {
+    color: white;
+    font-size: 0;
+    line-height: 1.5;
+    padding-right: 0.3em;
+}
+
+.words span {
+    font-size: 3rem;
+    display: inline-block;
+    animation: move 3s ease-in;
+    text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(-50%, 0);
+        color: black;
+        opacity: 0.5;
+    }
+    50% {
+        text-shadow: 0 0px 0px rgba(225, 255, 0, 0.75);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0%, 0);
+        opacity: 1;
+    }
+}
+
+.words span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.words span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.words span:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.words span:nth-child(5) {
+    animation-delay: 2s;
+}
+
+.words span:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+.words span:nth-child(7) {
+    animation-delay: 3s;
+}
+
+.words span:nth-child(8) {
+    animation-delay: 3.5s;
+}
+
+.words span:nth-child(9) {
+    animation-delay: 4s;
+}
+
+.words span:nth-child(10) {
+    animation-delay: 4.5s;
+}
+
+.words span:nth-child(11) {
+    animation-delay: 5s;
+}
+
+.words span:nth-child(12) {
+    animation-delay: 5.5s;
+}
+
+.words span:nth-child(13) {
+    animation-delay: 6s;
+}
+
+.words span:nth-child(14) {
+    animation-delay: 6.5s;
 }
