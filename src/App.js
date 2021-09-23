@@ -5,7 +5,7 @@ import VegaTime from './components/VegaTime/VegaTime'
 import MarketSelect from './components/MarketSelect/MarketSelect'
 import MarketData from './components/MarketsData/MarketsData'
 import { gql, useSubscription } from "@apollo/client"
-import configData from "./config.json";
+import configData from './config.json';
 
 
 const SUBSCRIBE_TRADES = gql`
@@ -35,9 +35,10 @@ function App() {
   const result = useSubscription(
     SUBSCRIBE_TRADES
   );
+  let liqBots = configData.liqBots.map(item => item.pubKey);
+  let traderBot = configData.traderBot.map(item => item.pubKey);
 
   if(result.data){
-    console.log(result.data.trades);
     result.data.trades.map((trade) => {
       if(trade.market.id){
         if(tradesRatio[trade.market.id]){
@@ -46,11 +47,15 @@ function App() {
         else{
           tradesRatio[trade.market.id] = {
             trades: 1,
-            botTrades: 0
+            botTrades: 0,
+            liqBotTrades: 0
           }
         }
-        if(configData.vegaBotList.includes(trade.buyer.id)){
+        if(traderBot.includes(trade.buyer.id)){
           tradesRatio[trade.market.id].botTrades += 1;
+        }
+        if(liqBots.includes(trade.buyer.id)){
+          tradesRatio[trade.market.id].liqBotTrades += 1;
         }
       }
     });
@@ -65,7 +70,7 @@ function App() {
         <MarketSelect updateMarkets={updateMarkets} />
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {markets.map((market) => {
-            return (<MarketData key={market.value} marketId={market.value} marketBotRatio={tradesRatio[market.value] ? tradesRatio[market.value].botTrades / tradesRatio[market.value].trades : 0} />);
+            return (<MarketData key={market.value} marketId={market.value} marketBotRatio={tradesRatio[market.value] ? tradesRatio[market.value].botTrades / tradesRatio[market.value].trades : 0} marketLiqBotRatio={tradesRatio[market.value] ? tradesRatio[market.value].liqBotTrades / tradesRatio[market.value].trades : 0} />);
           }  
           )}
         </div>

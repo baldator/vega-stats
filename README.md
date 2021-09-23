@@ -1,10 +1,11 @@
 # Vega Market - Bots analytics
 
-The project shows 
+The aim of the project is to provide a community example about how easy is to integrate Vega graphQL API into a react project.
+The project is getting Vega live data and providing a simple view showing the ratio of trades executed by bots or humans.
 
 ## Live demo
 
-You can acces the application here: [Live demo](https://gateway.pinata.cloud/ipfs/QmUocwXmN2axmT35WaYoL1vbuPoyT2tK5Gh7eUqeuBQ1Kb/)
+You can acces the application here: [Live demo](https://square-scene-4524.on.fleek.co/)
 
 ## Available Scripts
 

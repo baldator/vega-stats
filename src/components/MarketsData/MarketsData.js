@@ -24,7 +24,7 @@ const MARKET_SUBSCRIPTION = gql`
   }
 `;
 
-const MarketsData = ({marketId, marketBotRatio}) => {
+const MarketsData = ({marketId, marketBotRatio, marketLiqBotRatio}) => {
   const result = useSubscription(
     MARKET_SUBSCRIPTION,
     {
@@ -58,7 +58,15 @@ const MarketsData = ({marketId, marketBotRatio}) => {
             needleColor="black"
             startColor="green"
             segments={10}
-            currentValueText={"Bot/Human ratio - " + (marketBotRatio * 100).toFixed(1) + "%"}
+            currentValueText={"Trading Bot/Human ratio - " + (marketBotRatio * 100).toFixed(1) + "%"}
+            endColor="yellow" />
+        
+        <ReactSpeedometer maxValue={100}
+            value={marketLiqBotRatio * 100}
+            needleColor="black"
+            startColor="green"
+            segments={10}
+            currentValueText={"Liquidity Bot/Human ratio - " + (marketLiqBotRatio * 100).toFixed(1) + "%"}
             endColor="yellow" />
       </div>
     )
