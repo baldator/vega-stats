@@ -7,6 +7,73 @@ The project is getting Vega live data and providing a simple view showing the ra
 
 You can acces the application here: [Live demo](https://square-scene-4524.on.fleek.co/)
 
+# GraphQL query examples
+
+GraphQL queries are executed by [Apollo Client](https://www.apollographql.com/).
+
+## Run a simple query
+
+To run a simple query call the useQuery method. The method perform a one-shot query and never refresh data.
+Here is an example from the MarketSelect component:
+
+```javascript
+const GET_VEGA_MARKETS = gql`
+    query{
+      markets{
+        value: id
+        label: name
+      }
+    }
+`;
+
+const { loading, error, data } = useQuery(GET_VEGA_MARKETS);
+```
+
+## Run query and regularly reflesh data
+
+If you want to refresh data regularly, you can use the pollInterval attribute of the options object.
+You can find an example in the VegaRealTime component:
+
+```javascript
+const GET_VEGA_REAL_TIME = gql`
+  query GetVegaRealTime {
+    statistics{
+      vt: vegaTime
+    }
+  }
+`;
+
+const { loading, error, data } = useQuery(GET_VEGA_REAL_TIME, {
+    pollInterval: 1000
+});
+```
+
+## Subscribe to event stream
+
+If you want to subscribe to an event stream, you can use the useSubscription method provided by Apollo Client.
+You can find an example in the App component:
+
+```javascript
+const SUBSCRIBE_TRADES = gql`
+  subscription getTradingData {
+    trades{
+      size
+      market{
+        id
+      }
+      buyer{
+        id
+      }
+    }
+  }
+`;
+
+
+const result = useSubscription(
+    SUBSCRIBE_TRADES
+);
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
