@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react'
 import Header from './components/Header/Header'
-import VegaTime from './components/VegaTime/VegaTime'
+import VegaRealTime from './components/VegaRealTime/VegaRealTime'
 import MarketSelect from './components/MarketSelect/MarketSelect'
 import MarketData from './components/MarketsData/MarketsData'
 import { gql, useSubscription } from "@apollo/client"
@@ -60,17 +60,16 @@ function App() {
       }
     });
   }
-
   console.log("trades ratio: ", tradesRatio);
 
   return (
       <div>
         <Header />
-        <VegaTime />
+        <VegaRealTime />
         <MarketSelect updateMarkets={updateMarkets} />
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {markets.map((market) => {
-            return (<MarketData key={market.value} marketId={market.value} marketBotRatio={tradesRatio[market.value] ? tradesRatio[market.value].botTrades / tradesRatio[market.value].trades : 0} marketLiqBotRatio={tradesRatio[market.value] ? tradesRatio[market.value].liqBotTrades / tradesRatio[market.value].trades : 0} />);
+            return (<MarketData key={market.value} marketId={market.value} marketBotRatio={tradesRatio[market.value] ? (tradesRatio[market.value].botTrades + tradesRatio[market.value].liqBotTrades) / tradesRatio[market.value].trades : 0} marketLiqBotRatio={tradesRatio[market.value] ? tradesRatio[market.value].liqBotTrades / tradesRatio[market.value].botTrades : 0} />);
           }  
           )}
         </div>

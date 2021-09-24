@@ -36,15 +36,15 @@ const MarketSelect = ({updateMarkets}) => {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
   return (
-      <Select 
-        options={data.markets}
-        closeMenuOnSelect={false}
-        components={animatedComponents} 
-        isMulti
-        placeholder={placeholder}
-        onChange={(e) => updateMarkets(e)}
-        styles= { customStyles }
-         />
+        <Select 
+          options={data.markets}
+          closeMenuOnSelect={false}
+          components={animatedComponents} 
+          isMulti
+          placeholder={placeholder}
+          onChange={(e) => updateMarkets(e)}
+          styles= { customStyles }
+          />
   )
 };
 

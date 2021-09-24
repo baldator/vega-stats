@@ -58,7 +58,7 @@ const MarketsData = ({marketId, marketBotRatio, marketLiqBotRatio}) => {
             needleColor="black"
             startColor="green"
             segments={10}
-            currentValueText={"Trading Bot/Human ratio - " + (marketBotRatio * 100).toFixed(1) + "%"}
+            currentValueText={ "Bot/Human ratio - " + (marketBotRatio * 100).toFixed(1) + "%"}
             endColor="yellow" />
         
         <ReactSpeedometer maxValue={100}
@@ -66,7 +66,7 @@ const MarketsData = ({marketId, marketBotRatio, marketLiqBotRatio}) => {
             needleColor="black"
             startColor="green"
             segments={10}
-            currentValueText={"Liquidity Bot/Human ratio - " + (marketLiqBotRatio * 100).toFixed(1) + "%"}
+            currentValueText={"Liquidity Bots/Trading Bots ratio - " + (marketLiqBotRatio * 100).toFixed(1) + "%"}
             endColor="yellow" />
       </div>
     )
