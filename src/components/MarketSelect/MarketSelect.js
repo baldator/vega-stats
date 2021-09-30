@@ -10,6 +10,7 @@ const GET_VEGA_MARKETS = gql`
       markets{
         value: id
         label: name
+        state
       }
     }
 `;
@@ -30,14 +31,19 @@ const customStyles = {
   }
 }
 
-
-let markets = data.markets.filter(item => item.state = 'Active');
-
 const MarketSelect = ({updateMarkets}) => {
   const { loading, error, data } = useQuery(GET_VEGA_MARKETS);
 
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
+
+  let markets = [];
+
+  if (data !== undefined && data.markets !== undefined){
+    console.log(data.markets)
+    markets = data.markets.filter(item => item.state == 'Active' || item.state == 'Suspended');
+  }
+
   return (
         <Select 
           options={markets}
