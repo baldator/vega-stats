@@ -1,6 +1,6 @@
 # Vega Market - Bots analytics
 
-The aim of the project is to provide a community example about how easy is to integrate Vega graphQL API into a react project.
+The aim of the project is to provide a community example of how easy is to integrate Vega graphQL API into a react project.
 The project is getting Vega live data and providing a simple view showing the ratio of trades executed by bots or humans.
 
 ## Live demo
