@@ -30,6 +30,9 @@ const customStyles = {
   }
 }
 
+
+let markets = data.markets.filter(item => item.state = 'Active');
+
 const MarketSelect = ({updateMarkets}) => {
   const { loading, error, data } = useQuery(GET_VEGA_MARKETS);
 
@@ -37,7 +40,7 @@ const MarketSelect = ({updateMarkets}) => {
   if (error) return `Error! ${error.message}`;
   return (
         <Select 
-          options={data.markets}
+          options={markets}
           closeMenuOnSelect={false}
           components={animatedComponents} 
           isMulti
